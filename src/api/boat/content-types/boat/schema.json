@@ -1,0 +1,161 @@
+{
+  "kind": "collectionType",
+  "collectionName": "boats",
+  "info": {
+    "singularName": "boat",
+    "pluralName": "boats",
+    "displayName": "Boat"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "smallDescription": {
+      "type": "text"
+    },
+    "description": {
+      "type": "text"
+    },
+    "year": {
+      "type": "integer"
+    },
+    "boatType": {
+      "type": "string"
+    },
+    "keelType": {
+      "type": "string"
+    },
+    "brand": {
+      "type": "string"
+    },
+    "model": {
+      "type": "string"
+    },
+    "lenght": {
+      "type": "integer"
+    },
+    "beam": {
+      "type": "integer"
+    },
+    "displacement": {
+      "type": "integer"
+    },
+    "draft": {
+      "type": "integer"
+    },
+    "airDraft": {
+      "type": "integer"
+    },
+    "fuelCapacity": {
+      "type": "integer"
+    },
+    "waterCapacity": {
+      "type": "integer"
+    },
+    "enginePower": {
+      "type": "integer"
+    },
+    "steeringType": {
+      "type": "string"
+    },
+    "passengerCapacity": {
+      "type": "integer"
+    },
+    "cabinsNumber": {
+      "type": "integer"
+    },
+    "berthsNumber": {
+      "type": "integer"
+    },
+    "bathroomsNumber": {
+      "type": "integer"
+    },
+    "furlingGenoa": {
+      "type": "boolean"
+    },
+    "spiType": {
+      "type": "string"
+    },
+    "electricWindlass": {
+      "type": "boolean"
+    },
+    "sprayhood": {
+      "type": "boolean"
+    },
+    "bimini": {
+      "type": "boolean"
+    },
+    "tender": {
+      "type": "boolean"
+    },
+    "vhf": {
+      "type": "boolean"
+    },
+    "gps": {
+      "type": "boolean"
+    },
+    "anemometer": {
+      "type": "boolean"
+    },
+    "depthSounder": {
+      "type": "boolean"
+    },
+    "speedometer": {
+      "type": "boolean"
+    },
+    "autoPilot": {
+      "type": "boolean"
+    },
+    "ais": {
+      "type": "boolean"
+    },
+    "hotWater": {
+      "type": "boolean"
+    },
+    "interiorShower": {
+      "type": "boolean"
+    },
+    "exteriorShower": {
+      "type": "boolean"
+    },
+    "bedding": {
+      "type": "boolean"
+    },
+    "shorePower": {
+      "type": "boolean"
+    },
+    "heater": {
+      "type": "boolean"
+    },
+    "refrigerator": {
+      "type": "boolean"
+    },
+    "cockpitTable": {
+      "type": "boolean"
+    },
+    "price": {
+      "type": "integer"
+    },
+    "cleaningPrice": {
+      "type": "integer"
+    },
+    "tenderEnginePrice": {
+      "type": "integer"
+    },
+    "securityDeposit": {
+      "type": "integer"
+    },
+    "images": {
+      "allowedTypes": [
+        "images",
+        "files"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}
