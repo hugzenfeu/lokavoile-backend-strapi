@@ -126,3 +126,10 @@ server {
 
 }
 - install certbot
+
+
+
+cheat sheet:
+
+se connecter en au serveur en ssh 
+pour connecter un navigateur au reseau local créer une connexion ssh avec l'option -D et un numero de port. ensuite dans le navigateur ajouter un proxy de type socket V5 et renseigner localhost puis le numero de port choisi 
