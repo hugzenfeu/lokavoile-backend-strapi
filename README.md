@@ -126,6 +126,10 @@ server {
 
 }
 - install certbot
+- coté port forwarding ouverture de 
+port extérieur-port intérieur adresse 
+443-443 <adresse serveur>
+80-80 <adresse serveur>
 
 
 
