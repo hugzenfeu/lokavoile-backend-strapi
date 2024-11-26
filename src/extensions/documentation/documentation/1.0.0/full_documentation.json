@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-11-24T20:50:10.819Z"
+    "x-generation-date": "2024-11-25T22:19:10.774Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -24,7 +24,7 @@
   },
   "servers": [
     {
-      "url": "http://http://strapi-lokavoile.horizon-sailing.fr:4404/:4404/api",
+      "url": "https://strapi-dev.horizon-sailing.fr/api",
       "description": "Development server"
     }
   ],

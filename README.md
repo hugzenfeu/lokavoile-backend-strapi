@@ -64,3 +64,20 @@ TDL :
 
 - Faire un component réutilisable (title, summary, thumbnail)?
 -
+
+
+Install:
+- install git 
+- install node + npm
+- install openssh-server
+- cd ...repo_lokavoile
+- git clone repo
+- npm install
+- npm run build
+- npm run develop
+- install Nginx
+- configure /etc/nginx/conf.d/upstream.conf add:
+upstream strapi {
+    server 127.0.0.1:1337;
+}
+- install certbot
