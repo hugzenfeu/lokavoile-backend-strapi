@@ -130,7 +130,7 @@ server {
 port extérieur-port intérieur adresse 
 443-443 <adresse serveur>
 80-80 <adresse serveur>
-
+- installer pm2
 
 
 cheat sheet:
