@@ -11,7 +11,7 @@ fi
 set +o allexport
 
 # Validate required variables
-if [[ -z "$DYNHOST_USER" || -z "$DYNHOST_PASSWORD" || -z "$DYNHOST_HOSTNAME" ]]; then
+if [[ -z "$DYNHOST_USER" || -z "$DYNHOST_PASSWORD" || -z "$DYNHOST_SUBDOMAIN" ]]; then
     echo "$(date): Error - Missing required environment variables. Check .env file."
     exit 1
 fi
