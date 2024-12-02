@@ -372,6 +372,7 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
 export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
   collectionName: 'blogs';
   info: {
+    description: '';
     displayName: 'Blog';
     pluralName: 'blogs';
     singularName: 'blog';
@@ -388,6 +389,7 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     mdx: Schema.Attribute.RichText;
     publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
     summary: Schema.Attribute.Text;
     thumbnail: Schema.Attribute.Media<'images' | 'files'>;
     title: Schema.Attribute.String;
@@ -400,6 +402,7 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
 export interface ApiBoatBoat extends Struct.CollectionTypeSchema {
   collectionName: 'boats';
   info: {
+    description: '';
     displayName: 'Boat';
     pluralName: 'boats';
     singularName: 'boat';
@@ -452,6 +455,7 @@ export interface ApiBoatBoat extends Struct.CollectionTypeSchema {
     refrigerator: Schema.Attribute.Boolean;
     securityDeposit: Schema.Attribute.Integer;
     shorePower: Schema.Attribute.Boolean;
+    slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
     smallDescription: Schema.Attribute.Text;
     speedometer: Schema.Attribute.Boolean;
     spiType: Schema.Attribute.String;
@@ -504,7 +508,8 @@ export interface ApiContactContact extends Struct.CollectionTypeSchema {
 export interface ApiNewNew extends Struct.CollectionTypeSchema {
   collectionName: 'news';
   info: {
-    displayName: 'new';
+    description: '';
+    displayName: 'news';
     pluralName: 'news';
     singularName: 'new';
   };
@@ -521,6 +526,7 @@ export interface ApiNewNew extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::new.new'> &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
     summary: Schema.Attribute.Text;
     thumbnail: Schema.Attribute.Media<'images' | 'files'>;
     title: Schema.Attribute.String;
