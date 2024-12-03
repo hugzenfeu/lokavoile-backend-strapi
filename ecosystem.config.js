@@ -3,7 +3,7 @@ module.exports = {
     {
       name: 'strapi',
       script: 'npm',
-      args: 'start',
+      args: 'run develop',
       // Enable auto-restart (default behavior in PM2)
     },
     {
@@ -16,7 +16,7 @@ module.exports = {
     },
     {
       name: 'backups',
-      script: "./scripts/backups.sh",
+      script: "./scripts/backup.sh",
       cron_restart: '0 0 * * *',
       watch: false,
       autorestart: false,
