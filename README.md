@@ -126,6 +126,7 @@ server {
 
 }
 - install certbot
+- modify config/server.js avec le nom de domaine
 - coté port forwarding ouverture de 
 port extérieur-port intérieur adresse 
 443-443 <adresse serveur>

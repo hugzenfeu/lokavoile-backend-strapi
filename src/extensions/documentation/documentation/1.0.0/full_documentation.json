@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-12-02T20:32:57.984Z"
+    "x-generation-date": "2024-12-02T19:58:54.441Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -3521,6 +3521,9 @@
         ],
         "properties": {
           "data": {
+            "required": [
+              "slug"
+            ],
             "type": "object",
             "properties": {
               "title": {
@@ -3542,6 +3545,9 @@
                   }
                 ],
                 "example": "string or id"
+              },
+              "slug": {
+                "type": "string"
               },
               "locale": {
                 "type": "string"
@@ -3601,6 +3607,9 @@
       },
       "Blog": {
         "type": "object",
+        "required": [
+          "slug"
+        ],
         "properties": {
           "id": {
             "type": "number"
@@ -4215,6 +4224,9 @@
               }
             }
           },
+          "slug": {
+            "type": "string"
+          },
           "createdAt": {
             "type": "string",
             "format": "date-time"
@@ -4401,6 +4413,9 @@
                     }
                   }
                 },
+                "slug": {
+                  "type": "string"
+                },
                 "createdAt": {
                   "type": "string",
                   "format": "date-time"
@@ -4475,6 +4490,9 @@
         ],
         "properties": {
           "data": {
+            "required": [
+              "slug"
+            ],
             "type": "object",
             "properties": {
               "name": {
@@ -4629,6 +4647,9 @@
                   "example": "string or id"
                 }
               },
+              "slug": {
+                "type": "string"
+              },
               "locale": {
                 "type": "string"
               },
@@ -4687,6 +4708,9 @@
       },
       "Boat": {
         "type": "object",
+        "required": [
+          "slug"
+        ],
         "properties": {
           "id": {
             "type": "number"
@@ -5433,6 +5457,9 @@
               }
             }
           },
+          "slug": {
+            "type": "string"
+          },
           "createdAt": {
             "type": "string",
             "format": "date-time"
@@ -5750,6 +5777,9 @@
                       }
                     }
                   }
+                },
+                "slug": {
+                  "type": "string"
                 },
                 "createdAt": {
                   "type": "string",
@@ -6314,6 +6344,9 @@
         ],
         "properties": {
           "data": {
+            "required": [
+              "slug"
+            ],
             "type": "object",
             "properties": {
               "title": {
@@ -6338,6 +6371,9 @@
               },
               "isFeatured": {
                 "type": "boolean"
+              },
+              "slug": {
+                "type": "string"
               },
               "locale": {
                 "type": "string"
@@ -6397,6 +6433,9 @@
       },
       "New": {
         "type": "object",
+        "required": [
+          "slug"
+        ],
         "properties": {
           "id": {
             "type": "number"
@@ -7014,6 +7053,9 @@
           "isFeatured": {
             "type": "boolean"
           },
+          "slug": {
+            "type": "string"
+          },
           "createdAt": {
             "type": "string",
             "format": "date-time"
@@ -7202,6 +7244,9 @@
                 },
                 "isFeatured": {
                   "type": "boolean"
+                },
+                "slug": {
+                  "type": "string"
                 },
                 "createdAt": {
                   "type": "string",
