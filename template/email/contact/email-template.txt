@@ -1,0 +1,9 @@
+Bonjour Pierre,  
+
+M. {{firstName}} {{lastName}} souhaite réserver un bateau.  
+Voici ses coordonnées :  
+- Email : {{email}}  
+- Téléphone : {{phoneNumber}}  
+
+Son message est le suivant :  
+"{{message}}"
