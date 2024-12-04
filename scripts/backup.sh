@@ -2,9 +2,9 @@
 
 DATE=$(date +"%Y-%m-%d_%H-%M-%S")
 
-cd ..
+
 # Load environment variables and run the script
-set -a            
+set -a
 source .env
 set +a
 
