@@ -17,7 +17,7 @@ module.exports = {
     {
       name: 'backups',
       script: "./scripts/backup.sh",
-      cron_restart: '0 0 * * *',
+      cron_restart: '0 0 */1 * *',
       watch: false,
       autorestart: false,
       env_file: '.env',
