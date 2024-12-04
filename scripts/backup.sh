@@ -15,7 +15,7 @@ if [ -z "$BACKUP_DIR" ] || [ -z "$DYNHOST_SUBDOMAIN" ]; then
   exit 1
 fi
 
-npm run strapi export -- --file "${BACKUP_DIR}${DATE}${DYNHOST_SUBDOMAIN}.tar.gz" --no-encrypt
+npm run strapi export -- --file "${BACKUP_DIR}${DATE}${DYNHOST_SUBDOMAIN}" --no-encrypt
 
 # Check if the backup was successful
 if [ $? -eq 0 ]; then
