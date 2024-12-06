@@ -9,11 +9,13 @@ source .env
 set +a
 
 # Check if required environment variables are set
-if [ -z "$BACKUP_DIR" ] || [ -z "$DYNHOST_SUBDOMAIN" ]; then
+if [ -z "$BACKUP_DIR" ] || [ -z "$DYNHOST_SUBDOMAIN" ] ||[-z "$ROOT_DIR"]; then
   echo "Error: Required environment variables are not set."
   echo "Please ensure that BACKUP_DIR and DYNHOST_SUBDOMAIN are defined in the .env file."
   exit 1
 fi
+
+cd $ROOT_DIR
 
 npm run strapi export -- --file "${BACKUP_DIR}${DATE}${DYNHOST_SUBDOMAIN}" --no-encrypt
 
