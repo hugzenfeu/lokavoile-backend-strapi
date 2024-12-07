@@ -34,11 +34,11 @@ smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
 
 
 smtpd_relay_restrictions = permit_mynetworks permit_sasl_authenticated defer_unauth_destination
-myhostname = mail.horizon-sailing.fr
+myhostname = mail.{{MAIL_DOMAIN}}
 alias_maps = hash:/etc/aliases
 alias_database = hash:/etc/aliases
 myorigin = /etc/mailname
-mydestination = mail.horizon-sailing.fr, mail.horizon-sailing.fr, localhost.horizon-sailing.fr, , localhost
+mydestination = mail.{{MAIL_DOMAIN}}, mail.{{MAIL_DOMAIN}}, localhost.{{MAIL_DOMAIN}}, , localhost
 relayhost = 
 mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128
 mailbox_size_limit = 0
@@ -46,4 +46,4 @@ recipient_delimiter = +
 inet_interfaces = loopback-only
 inet_protocols = all
 
-masquerade_domains = horizon-sailing.fr
+masquerade_domains = {{MAIL_DOMAIN}}

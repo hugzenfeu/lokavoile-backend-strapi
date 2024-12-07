@@ -13,8 +13,8 @@ export default ({ env }) => ({
       },
     },
     settings: {
-      defaultFrom: 'no-reply@horizon-sailing.fr',
-      defaultReplyTo: 'horizon.sailing.fr@gmail.com',
+      defaultFrom: env('DEFAULT_FROM','no-reply@horizon-sailing.fr'),
+      defaultReplyTo: env('DEFAULT_REPLY_TO', 'horizon.sailing.fr@gmail.com'),
     },
   },
 
