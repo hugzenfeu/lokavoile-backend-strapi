@@ -131,7 +131,13 @@ server {
 port extérieur-port intérieur adresse 
 443-443 <adresse serveur>
 80-80 <adresse serveur>
-
+-install pm2
+-install python/pip
+-install virtualenv 
+-pip install -r requirements.txt
+-npm install
+-npm run build
+-npm run develop
 
 
 cheat sheet:

@@ -22,5 +22,11 @@ module.exports = {
       autorestart: false,
       env_file: '.env',
     },
+    {
+      name: 'failover',
+      script: "./scripts/failover/startFailover.sh",
+      autorestart: false,
+      env_file: '.env',
+    }
   ],
 };
