@@ -2,6 +2,8 @@ import requests
 import time
 import smtplib
 from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from email.utils import formatdate
 from dotenv import load_dotenv
 import os
 import paramiko
@@ -31,22 +33,28 @@ BACKUP_SSH_CONFIG = {
 }
 
 
-def send_email(subject, message):
-    """Send an email notification."""
+def send_email(subject, message_plain, message_html):
+    """Send an email notification using the local MTA."""
     try:
-        msg = MIMEText(message)
+        # Create a multipart message
+        msg = MIMEMultipart("alternative")
         msg["Subject"] = subject
         msg["From"] = EMAIL_CONFIG["from_addr"]
         msg["To"] = EMAIL_CONFIG["to_addr"]
+        msg["Date"] = formatdate(localtime=True)
+        msg["Reply-To"] = EMAIL_CONFIG.get("reply_to", EMAIL_CONFIG["from_addr"])
 
-        with smtplib.SMTP(EMAIL_CONFIG["smtp_server"], EMAIL_CONFIG["smtp_port"]) as server:
-            # server.starttls() # Enables TLS for secure communication
-            # server.login(EMAIL_CONFIG["username"], EMAIL_CONFIG["password"])
+        # Attach both plain text and HTML parts
+        msg.attach(MIMEText(message_plain, "plain"))
+        msg.attach(MIMEText(message_html, "html"))
+
+        # Send the email using the local MTA
+        with smtplib.SMTP("localhost") as server:
             server.sendmail(EMAIL_CONFIG["from_addr"], EMAIL_CONFIG["to_addr"], msg.as_string())
-        print(f"Email sent: {subject,msg['From'],msg['To']}")
+
+        print(f"Email sent: {subject}, From: {msg['From']}, To: {msg['To']}")
     except Exception as e:
         print(f"Failed to send email: {e}")
-
 
 def check_server(url):
     """Check if the server is reachable via HTTP."""
@@ -74,7 +82,7 @@ def check_backup_ssh():
             client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
             client.connect(hostname=BACKUP_SSH_CONFIG["hostname"], port=BACKUP_SSH_CONFIG["port"], username=BACKUP_SSH_CONFIG["username"], key_filename=BACKUP_SSH_CONFIG["key_filename"])
             client.close()
-            print("Backup server SSH connection successful.")
+            
             
         except Exception as e:
             print(f"Failed to connect to backup server via SSH: {e}")
@@ -82,6 +90,60 @@ def check_backup_ssh():
         time.sleep(5)  # Short delay between checks
     return True
 
+def mail_server_is_restaured():
+    send_email(
+    "Backup Server Restored",
+    "The backup server is now reachable.",  # Plain text version
+    """
+    <html>
+        <body>
+            <h1>Backup Server Restored</h1>
+            <p>The backup server is now reachable.</p>
+        </body>
+    </html>
+    """  # HTML version
+)
+def mail_backup_server_down():send_email(
+    "Backup Server Down",
+    "The backup server is not reachable.\n",  # Plain text version
+    """
+    <html>
+        <body>
+            <h1 style="color:red;">Backup Server Down</h1>
+            <p>The backup server is not reachable.</p>
+        </body>
+    </html>
+    """  # HTML version
+)
+
+def mail_primary_server_restored():
+    send_email(
+    "Primary Server Restored",
+    "The primary server is now reachable.\n",  # Plain text version
+    """
+    <html>
+        <body>
+            <h1 style="color:green;">Primary Server Restored</h1>
+            <p>The primary server is now reachable.</p>
+        </body>
+    </html>
+    """  # HTML version
+)
+
+def mail_backup_server_activated():
+    send_email(
+    "Backup Server Activated",
+    "The backup server has been activated as the primary server is down.",  # Plain text version
+    """
+    <html>
+        <body>
+            <h1 style="color:green;">Backup Server Activated</h1>
+            <p>The backup server has been activated as the primary server is down.</p>
+        </body>
+    </html>
+    """  # HTML version
+)
+    
 def main():
     global primary_server_down, backup_server_down
     primary_server_down, backup_server_down = False, False
@@ -93,19 +155,19 @@ def main():
             if check_backup_ssh():
                 print("Backup server is reachable via SSH. Retrying...\n")
                 if backup_server_down:
-                    send_email("Backup Server Restored", "The backup server is now reachable.")
+                    mail_server_is_restaured()
                     backup_server_down = False
             else:
                 print("Backup server is down.\n")
                 if not backup_server_down:
-                    send_email("Backup Server Down", "The backup server is not reachable.\n")
+                    mail_backup_server_down()
                     backup_server_down = True
 
         elif role == "backup":
             if not is_server_down(PRIMARY_URL):
                 print("Primary server is reachable. Retrying...\n")
                 if primary_server_down:
-                    send_email("Primary Server Restored", "The primary server is now reachable.\n")
+                    mail_primary_server_restored()
                     primary_server_down = False
             else:
                 print("Primary server is down. Checking connectivity...\n")
@@ -113,7 +175,7 @@ def main():
                     print("Connectivity verified. Starting backup server...\n")
                     if not primary_server_down:
                         os.system(START_BACKUP_COMMAND)
-                        send_email("Backup Server Activated", "The backup server has been activated as the primary server is down.")
+                        mail_backup_server_activated()
                         primary_server_down = True
                         role = "primary"  # Assume the role of primary server
                 else:
