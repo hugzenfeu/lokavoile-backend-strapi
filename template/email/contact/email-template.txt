@@ -1,6 +1,6 @@
 Bonjour Pierre,  
 
-M. {{firstName}} {{lastName}} souhaite réserver un bateau.  
+M. {{firstName}} {{lastName}} souhaite vous contacter.  
 Voici ses coordonnées :  
 - Email : {{email}}  
 - Téléphone : {{phoneNumber}}  
